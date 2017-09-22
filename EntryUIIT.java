@@ -84,5 +84,16 @@ public class EntryUIIT {
 		IEntryController s = (IEntryController) f.get(entryUI);
 		assertNull(s);
 	}
+	@Test
+	public void testDisplay()throws Exception {
+		String message="Message";
+		entryUI.display(message);
+		Field f = Class.forName("bcccp.carpark.entry.EntryUI").getDeclaredField("displayTextField");
+		f.setAccessible(true);
+		JTextField s = (JTextField) f.get(entryUI);
+		assertEquals(message,s.getText());
+	}
+}
+
 	
 	

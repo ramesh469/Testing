@@ -48,6 +48,7 @@ public class EntryUIIT {
 		builder.append("Carpark    : " + carparkId + "\n");
 		builder.append("Ticket No  : " + tNo + "\n");
 		builder.append("Entry Time : " + datetime + "\n");
+		
 		builder.append("Barcode    : " + barcode + "\n");
 		
 		entryUI.printTicket(carparkId, 123121,datetime.getTime() , barcode);

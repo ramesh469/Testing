@@ -28,6 +28,7 @@ public class EntryUIIT {
 	}
 
 	@AfterClass
+	
 	public static void tearDownAfterClass() throws Exception {
 	}
 

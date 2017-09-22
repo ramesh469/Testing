@@ -56,5 +56,33 @@ public class EntryUIIT {
 		JTextArea s = (JTextArea) f.get(entryUI);
 		assertEquals(builder.toString(),s.getText());
 	}
+	@Test
+	public void testPrintTicket() {
+		entryUI.printTicket("CAR1232", 123121,new Date().getTime() , "1234123412341234");
+		assertTrue(entryUI.ticketPrinted());
+	}
+	
+	@Test
+	public void testTicket() {
+		assertTrue(entryUI.ticketPrinted());
+	}
+	@Test
+	public void testRegisterController()throws Exception {
+		IEntryController controller=new EntryController(null,null,null,null,null);
+		entryUI.registerController(controller);
+		Field f = Class.forName("bcccp.carpark.entry.EntryUI").getDeclaredField("controller");
+		f.setAccessible(true);
+		IEntryController s = (IEntryController) f.get(entryUI);
+		assertNotNull(s);
+	}
+	@Test
+	public void testDeRegisterController()throws Exception {
+		IEntryController controller=new EntryController(null,null,null,null,null);
+		entryUI.deregisterController();
+		Field f = Class.forName("bcccp.carpark.entry.EntryUI").getDeclaredField("controller");
+		f.setAccessible(true);
+		IEntryController s = (IEntryController) f.get(entryUI);
+		assertNull(s);
+	}
 	
 	

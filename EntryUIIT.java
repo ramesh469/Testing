@@ -38,4 +38,23 @@ public class EntryUIIT {
 	@After
 	public void tearDown() throws Exception {
 	}
+	@Test
+	public void testPrintTicketM()throws Exception {
+		String carparkId="CAR1232";
+		int tNo=123121;
+		Date datetime=new Date();
+		String barcode="1234123412341234";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Carpark    : " + carparkId + "\n");
+		builder.append("Ticket No  : " + tNo + "\n");
+		builder.append("Entry Time : " + datetime + "\n");
+		builder.append("Barcode    : " + barcode + "\n");
+		
+		entryUI.printTicket(carparkId, 123121,datetime.getTime() , barcode);
+		Field f = Class.forName("bcccp.carpark.entry.EntryUI").getDeclaredField("ticketPrinterTextArea");
+		f.setAccessible(true);
+		JTextArea s = (JTextArea) f.get(entryUI);
+		assertEquals(builder.toString(),s.getText());
+	}
+	
 	
